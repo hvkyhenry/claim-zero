@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+crash.log
+*.tfvars
+!*.tfvars.example

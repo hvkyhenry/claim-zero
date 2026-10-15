@@ -1,0 +1,78 @@
+/* Reset default browser spacing so layout is predictable. */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* Base page surface and typography. */
+body{
+    background:#ffffff;
+    font-family:Segoe UI,sans-serif;
+}
+
+/* Full-viewport centred column. */
+.app{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:40px;
+}
+
+.bootcamp-title{
+    letter-spacing:8px;
+    font-size:24px;
+    margin-bottom:50px;
+    color:#2d3748;
+}
+
+.cards{
+    display:flex;
+    gap:40px;
+    margin-bottom:50px;
+}
+
+.card{
+    width:330px;
+    height:330px;
+    background:white;
+    border-radius:25px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow: 0 10px 35px rgba(0,0,0,.10);
+}
+
+.card img{
+    width:75%;
+}
+
+.banner{
+    width:700px;
+    background:white;
+    border:3px solid #4f46e5;
+    border-radius:25px;
+    padding:30px;
+    box-shadow: 0 12px 30px rgba(0,0,0,.08);
+}
+
+.banner h1{
+    font-size:96px;
+    font-weight:900;
+}
+
+/* Gradient text for the programme suffix. */
+.gradient{
+    background: linear-gradient(90deg, #7c3aed, #2563eb);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+
+.tagline{
+    margin-top:40px;
+    font-size:28px;
+    color:#555;
+}

@@ -1,0 +1,25 @@
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+      - REGION=eu-north-1
+      - REPO=claim-zero
+      - IMAGE_URI=$ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com/$REPO:latest
+      - echo Logging in to Amazon ECR
+      - aws ecr get-login-password --region $REGION | docker login --username AWS --password-stdin $ACCOUNT_ID.dkr.ecr.$REGION.amazonaws.com
+  build:
+    commands:
+      - echo Build started on `date`
+      - docker build -t $REPO:latest .
+      - docker tag $REPO:latest $IMAGE_URI
+  post_build:
+    commands:
+      - echo Pushing $IMAGE_URI
+      - docker push $IMAGE_URI
+      - printf '[{"name":"claim-zero","imageUri":"%s"}]' $IMAGE_URI > imagedefinitions.json
+
+artifacts:
+  files:
+    - imagedefinitions.json
